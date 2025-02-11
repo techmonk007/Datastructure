@@ -5,25 +5,40 @@ class Node:
 
 
 class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+
     def insertAtBeginning(self,head,data):
         newNode = Node(data)
         newNode.next = head
         return newNode
 
+    def insertAtEnd(self,head,data):
+        newNode = Node(data)
+        if head == None:
+            head = newNode
+        else:
+            current = head
+            while current.next:
+                current = current.next
+            current.next = newNode
+
+
     def traverse(self,head):
         current = head
-        while current:
-            print(current.data)
-            current = current.next
+        if current is None:
+            print("SLL is empty")
+        else:
+            while current:
+                print(current.data)
+                current = current.next
 
 
 
 sll = SinglyLinkedList()
-head = None
-head = sll.insertAtBeginning(head, 10)
-head = sll.insertAtBeginning(head, 100)
-head = sll.insertAtBeginning(head, 120)
-head = sll.insertAtBeginning(head, 130)
-
-sll.traverse(head)
-
+sll.head = sll.insertAtBeginning(sll.head, 10)
+sll.head = sll.insertAtBeginning(sll.head, 100)
+sll.head = sll.insertAtBeginning(sll.head, 120)
+sll.head = sll.insertAtBeginning(sll.head, 130)
+sll.insertAtEnd(sll.head,1000)
+sll.traverse(sll.head)
